@@ -1,0 +1,35 @@
+ #molecule_in_vacuum.lt
+ # runs a single molecule in vacuum for 100 steps
+ 
+ write_once("Data Boundary"){
+     -100.0 100.0 xlo xhi
+     -100.0 100.0 ylo yhi
+     -100.0 100.0 zlo zhi
+ }
+ 
+ write_once("In Init"){
+ # a variable named `cutoff` is required by GROMOS_54A7_ATB.lt
+ variable cutoff equal 14.0 # Angstroms
+ boundary f f f
+ }
+ 
+ # import the forcefield file
+ import "GROMOS_54A7_ATB.lt"
+ # import molecule building block file
+ import "D7SA_allatom_optimized_geometry.lt"
+ 
+ # create a single molecule
+ mol = new GROMOS_54A7_ATB/D7SA
+ 
+ write_once("In Output"){
+     thermo 1
+     dump 1 all atom 10 dump.lammpstrj
+ }
+ 
+ write_once("In Run"){
+ 
+ fix int all nve
+ timestep 1.0
+ run 100
+ 
+ }

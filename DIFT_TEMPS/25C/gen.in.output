@@ -1,0 +1,4 @@
+
+     thermo 1000
+     thermo_style custom step atoms temp press pe ke ebond epair eangle edihed ecoul evdwl etotal vol density
+     dump 1 all custom 10000 dump.lammpstrj id mol type mass q xu yu zu
