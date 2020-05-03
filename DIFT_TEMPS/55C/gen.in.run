@@ -12,7 +12,7 @@
  fix wt water shake 0.0001 20 0 b 254 a 155
  pair_modify mix geometric  
  #fix ens all nve
- fix ens all npt temp 300 300 100 iso 1 1 1000
+ fix ens all npt temp 328 328 100 iso 1 1 1000
  #minimize 1e-5 1e-5 10000 10000 
  run 1000000
  write_data data.4
